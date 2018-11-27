@@ -3,7 +3,10 @@
         <div id="myZoobars">
         </div>
 
-        <script src="http://localhost:8080/zoobar/index.cgi/zoobarjs">
+        <script src="http://localhost:8080/zoobar/index.cgi/zoobarjs"></script>
+        <script>
+         if (!/[0-9]+/g.exec(document.getElementById('myZoobars').innerHTML))
+             window.location.href = 'zoobar-login.html'
         </script>
     </body>
 </html>
