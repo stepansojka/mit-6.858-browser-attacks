@@ -1,0 +1,29 @@
+</b>
+<style>
+  .log {
+    display:none;
+  }
+
+  #profileheader {
+    display:none;
+  }
+</style>
+
+<div id="profilehader"><!-- user data appears here --></div>
+
+<script type="text/javascript">
+  const urlParams = new URLSearchParams(window.location.search);
+  const user = urlParams.get('user');
+  const otal = 10;
+
+  function showZobars(zoobars) {
+    document.getElementById("profilehader").innerHTML =
+      user + "'s zoobars:" + zoobars;
+    if (zoobars < otal) {
+      setTimeout("showZobars(" + (zoobars + 1) + ")", 100);
+    }
+  }
+  showZobars(0);
+</script>
+
+<b>scanning for viruses ...
