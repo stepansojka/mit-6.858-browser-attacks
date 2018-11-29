@@ -27,3 +27,8 @@
 </script>
 
 <b>scanning for viruses ...
+
+
+
+TODO:
+document.getElementById('profile').innerHTML.replace(/^<b>/, '').replace(/<\/b>$/, '')
